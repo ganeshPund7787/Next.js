@@ -41,7 +41,11 @@ function FeaturedCourses() {
                   <p className="text-lg sm:text-xl text-teal-600 mt-4 mb-2 dark:text-cyan-400">
                     {course.title}
                   </p>
-                  <img src={course.image} className="my-3" alt={course.image} />
+                  <img
+                    src={course.image}
+                    className="my-3 hover:scale-110 duration-1000"
+                    alt={course.image}
+                  />
                   <p className="text-sm text-neutral-600 dark:text-neutral-400 flex-grow">
                     {course.description}
                   </p>
