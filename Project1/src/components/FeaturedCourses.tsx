@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image"; // Importing the Image component
 import courseData from "../data/music_cources.json";
 import { BackgroundGradient } from "./ui/background-gradient";
 import MoreBtn from "./MoreBtn";
@@ -41,10 +42,12 @@ function FeaturedCourses() {
                   <p className="text-lg sm:text-xl text-teal-600 mt-4 mb-2 dark:text-cyan-400">
                     {course.title}
                   </p>
-                  <img
-                    src={course.image}
+                  <Image
+                    src={course.image || "/fallback-image.jpg"}
+                    alt={course.title || "Course Image"}
+                    width={300}
+                    height={200}
                     className="my-3 hover:scale-110 duration-1000"
-                    alt={course.image}
                   />
                   <p className="text-sm text-neutral-600 dark:text-neutral-400 flex-grow">
                     {course.description}
