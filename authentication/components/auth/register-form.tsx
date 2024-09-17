@@ -5,32 +5,33 @@ import { useForm } from "react-hook-form";
 import { useState, useTransition } from "react";
 import { Form } from "@/components/ui/form";
 import { z } from "zod";
-import { LoginSchema } from "@/schemas/index";
+import { RegisterSchema } from "@/schemas/index";
 import { FormInput } from "@/components/FormInput";
 import { Button } from "@/components/ui/button";
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
-import { login } from "@/actions/login";
+import { register } from "@/actions/register";
 
-export const LoginForm = () => {
+export const RegisterForm = () => {
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState<string>("");
-  const form = useForm<z.infer<typeof LoginSchema>>({
-    resolver: zodResolver(LoginSchema),
+  const form = useForm<z.infer<typeof RegisterSchema>>({
+    resolver: zodResolver(RegisterSchema),
     defaultValues: {
+      name: "",
       email: "",
       password: "",
     },
   });
 
-  const onSubmit = (values: z.infer<typeof LoginSchema>) => {
+  const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
     console.log(values);
     setError("");
     setSuccess("");
 
     startTransition(() => {
-      login(values).then((data) => {
+      register(values).then((data) => {
         setError(data.error!);
         setSuccess(data.success!);
       });
@@ -39,14 +40,21 @@ export const LoginForm = () => {
 
   return (
     <CardWrapper
-      headerLabel="Welcome Back"
-      backButtonLabel="Dont't have an account ?"
-      backButtonHref="/auth/register"
+      headerLabel="Create new account"
+      backButtonLabel="Already have an account ?"
+      backButtonHref="/auth/login"
       showSocial
     >
       <Form {...form}>
         <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
           <div className="space-y-4">
+            <FormInput
+              control={form.control}
+              label="Name"
+              name="name"
+              placeholder="Enter your name : "
+              disabled={isPending}
+            />
             <FormInput
               control={form.control}
               label="Email"

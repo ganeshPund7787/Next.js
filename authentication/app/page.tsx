@@ -24,7 +24,7 @@ export default function Home() {
         >
           🔐 Auth
         </h1>
-        <p className="text-white text-lg">A simple mAuthetication Service</p>
+        <p className="text-white text-lg">A simple Authetication Service</p>
         <div className="">
           <LoginBtn>
             <Button variant={"secondary"} size={"lg"}>

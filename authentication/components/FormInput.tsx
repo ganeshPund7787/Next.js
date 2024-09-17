@@ -13,6 +13,7 @@ export interface InputProps {
   label: string;
   placeholder: string;
   type?: any;
+  disabled?: boolean;
 }
 
 export const FormInput = ({
@@ -21,6 +22,7 @@ export const FormInput = ({
   label,
   placeholder,
   type = "text",
+  disabled = false,
 }: InputProps) => {
   return (
     <div>
@@ -31,7 +33,12 @@ export const FormInput = ({
           <FormItem>
             <FormLabel className="font-bold">{label}</FormLabel>
             <FormControl>
-              <Input type={type} {...field} placeholder={placeholder} />
+              <Input
+                disabled={disabled}
+                type={type}
+                {...field}
+                placeholder={placeholder}
+              />
             </FormControl>
             <FormMessage />
           </FormItem>
