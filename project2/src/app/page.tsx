@@ -99,8 +99,20 @@ export default function Home() {
                 alt=""
                 className="absolute w-20 -left-6 -bottom-6 select-none"
               />
-              <Phone className="w-64" imgSrc="/testimonials/1.jpg"  />
+              <Phone className="w-64" imgSrc="/testimonials/1.jpg" />
             </div>
+          </div>
+        </MaxWidthWrapper>
+      </section>
+
+      {/* value propposition section */}
+
+      <section className="bg-slate-100 py-14">
+        <MaxWidthWrapper className="flex flex-col items-center gap-16 sm:gap-32 ">
+          <div className="flex flex-col lg:flex-row items-center gap-4 sm:gap-6">
+            <h2 className="order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-gray-900">
+              What our <span className="relative px-2 ">customer</span> say
+            </h2>
           </div>
         </MaxWidthWrapper>
       </section>
