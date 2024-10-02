@@ -1,5 +1,6 @@
 "use client";
 
+import HandleComponent from "@/components/HandleComponent";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { cn } from "@/lib/utils";
 import NextImage from "next/image";
@@ -46,6 +47,13 @@ const DesignConfigurator = ({
             y: 205,
             height: imageDimensions.height / 4,
             width: imageDimensions.width / 4,
+          }}
+          lockAspectRatio
+          resizeHandleComponent={{
+            bottomRight: <HandleComponent />,
+            bottomLeft: <HandleComponent />,
+            topLeft: <HandleComponent />,
+            topRight: <HandleComponent />,
           }}
         >
           <div className="relative w-full h-full">
