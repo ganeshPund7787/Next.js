@@ -34,6 +34,7 @@
     "react-dropzone": "^14.2.3",
     "react-rnd": "^10.4.13",
     "sharp": "^0.32.6",
+    "stripe": "^17.1.0",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
     "uploadthing": "^7.0.2",
