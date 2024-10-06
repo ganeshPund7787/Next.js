@@ -15,23 +15,23 @@ export const ourFileRouter = {
       const { configId } = metadata.input;
 
       const res = await fetch(file.url);
-
       const buffer = await res.arrayBuffer();
 
-      const imgMetaData = await sharp(buffer).metadata();
-      const { height, width } = imgMetaData;
+      const imgMetadata = await sharp(buffer).metadata();
+      const { width, height } = imgMetadata;
 
       if (!configId) {
         const configuration = await db.configuration.create({
           data: {
-            imgUrl: file.url,
+            imageUrl: file.url,
             height: height || 500,
             width: width || 500,
           },
         });
+
         return { configId: configuration.id };
       } else {
-        const updateConfiguration = await db.configuration.update({
+        const updatedConfiguration = await db.configuration.update({
           where: {
             id: configId,
           },
@@ -39,7 +39,8 @@ export const ourFileRouter = {
             croppedImageUrl: file.url,
           },
         });
-        return { configId: updateConfiguration.id };
+
+        return { configId: updatedConfiguration.id };
       }
     }),
 } satisfies FileRouter;

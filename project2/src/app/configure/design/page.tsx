@@ -23,11 +23,11 @@ const Page = async ({ searchParams }: PageProps) => {
     return notFound();
   }
 
-  const { height, width, imgUrl } = configuration;
+  const { height, width, imageUrl } = configuration;
   return (
     <DesignConfigurator
       configId={configuration.id}
-      imageUrl={imgUrl}
+      imageUrl={imageUrl}
       imageDimensions={{ height, width }}
     />
   );
