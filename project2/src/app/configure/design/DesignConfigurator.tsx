@@ -85,7 +85,7 @@ const DesignConfigurator = ({
 
   const [renderedPosition, setRenderedPosition] = useState({
     x: 150,
-    y: 205,
+    y: 208,
   });
 
   const phoneCaseRef = useRef<HTMLDivElement>(null);
@@ -114,13 +114,11 @@ const DesignConfigurator = ({
       const canvas = document.createElement("canvas");
       canvas.width = width;
       canvas.height = height;
-
       const ctx = canvas.getContext("2d");
 
       const userImage = new Image();
       userImage.crossOrigin = "anonymous";
       userImage.src = imageUrl;
-
       await new Promise((resolve) => (userImage.onload = resolve));
 
       ctx?.drawImage(
@@ -128,7 +126,7 @@ const DesignConfigurator = ({
         actualX,
         actualY,
         renderedDimension.width,
-        renderedDimension.width
+        renderedDimension.height
       );
 
       const base64 = canvas.toDataURL();
@@ -138,7 +136,7 @@ const DesignConfigurator = ({
       const file = new File([blob], "filename.png", { type: "image/png" });
 
       await startUpload([file], { configId });
-    } catch (error) {
+    } catch (err) {
       toast({
         title: "Something went wrong",
         description:
@@ -188,7 +186,7 @@ const DesignConfigurator = ({
         <Rnd
           default={{
             x: 150,
-            y: 205,
+            y: 208,
             height: imageDimensions.height / 4,
             width: imageDimensions.width / 4,
           }}
