@@ -39,7 +39,7 @@ enum CaseColor {
 }
 
 model Configuration {
-  id              String        @id @default(cuid()) //Collision-resistant Unique Identifier
+  id              String        @id @default(cuid())
   width           Int
   height          Int
   imageUrl        String
