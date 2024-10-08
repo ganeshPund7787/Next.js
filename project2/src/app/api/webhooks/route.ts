@@ -1,13 +1,13 @@
+
 import { db } from "@/db";
 import { stripe } from "@/lib/stripe";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
-export const Post = async (req: Request) => {
+export async function POST(req: Request) {
   try {
     const body = await req.text();
-
     const signature = headers().get("stripe-signature");
 
     if (!signature) {
@@ -27,7 +27,7 @@ export const Post = async (req: Request) => {
 
       const session = event.data.object as Stripe.Checkout.Session;
 
-      const { orderId, userId } = session.metadata || {
+      const { userId, orderId } = session.metadata || {
         userId: null,
         orderId: null,
       };
@@ -38,8 +38,8 @@ export const Post = async (req: Request) => {
 
       const billingAddress = session.customer_details!.address;
       const shippingAddress = session.shipping_details!.address;
-      // const updatedOrder =
-      await db.order.update({
+
+      const updatedOrder = await db.order.update({
         where: {
           id: orderId,
         },
@@ -70,12 +70,12 @@ export const Post = async (req: Request) => {
     }
 
     return NextResponse.json({ result: event, ok: true });
-  } catch (error) {
-    console.error(error);
+  } catch (err) {
+    console.error(err);
 
     return NextResponse.json(
       { message: "Something went wrong", ok: false },
       { status: 500 }
     );
   }
-};
+}
