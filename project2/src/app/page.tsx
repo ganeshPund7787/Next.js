@@ -77,8 +77,11 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col justify-between sm:items-center">
                   <div className="flex justify-center gap-0.5">
-                    {[1, 2, 3, 4].map(() => (
-                      <Star className="size-4 text-green-600 fill-green-600" />
+                    {[1, 2, 3, 4].map((key) => (
+                      <Star
+                        key={key}
+                        className="size-4 text-green-600 fill-green-600"
+                      />
                     ))}
                   </div>
 
@@ -131,8 +134,11 @@ export default function Home() {
           <div className="mx-auto grid max-w-2xl grid-cols-1 px-4 lg:mx-0 lg:max-w-none lg:grid-cols-2 gap-y-16">
             <div className="flex flex-auto flex-col gap-4 lg:pr-8 xl:pr-20">
               <div className="flex gap-0.5 mb-2">
-                {[1, 2, 3, 4, 5].map(() => (
-                  <Star className="size-5 text-green-600 fill-green-600" />
+                {[1, 2, 3, 4, 5].map((key) => (
+                  <Star
+                    key={key}
+                    className="size-5 text-green-600 fill-green-600"
+                  />
                 ))}
               </div>
               <div className="text-lg leading-8">
@@ -164,8 +170,11 @@ export default function Home() {
 
             <div className="flex flex-auto flex-col gap-4 lg:pr-8 xl:pr-20">
               <div className="flex gap-0.5 mb-2">
-                {[1, 2, 3, 4, 5].map(() => (
-                  <Star className="size-5 text-green-600 fill-green-600" />
+                {[1, 2, 3, 4, 5].map((key) => (
+                  <Star
+                    key={key}
+                    className="size-5 text-green-600 fill-green-600"
+                  />
                 ))}
               </div>
               <div className="text-lg leading-8">
